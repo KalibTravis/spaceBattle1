@@ -102,7 +102,7 @@ let alienShips = [
     const versus = function vs(ship1 , ship2){
         do{
             ship1Attk(ship1, ship2);
-            ship2Attk();
+            ship2Attk(ship1, ship2);
         }while(ship1.Hull > 0 && ship2.Hull > 0 );
         }
 
@@ -111,6 +111,20 @@ let alienShips = [
             console.log('Your ship has been destroyed');
         }else{
             versus(terminators[0] , alienShips[i]);
+            if(terminators[0].Hull > 0 && alienShips[i].Hull <= 0 ){
+                console.log(alienShips[i].shipName + ' was detroyed! Continue? Y/N')
+                let isExecuted = confirm("Take on another ship?");
+
+console.log(isExecuted);
+if (isExecuted) {
+    // if true
+    alert("Action successfully executed");
+  } else {
+    // if false
+    alert("Action canceled");
+  }
+                //event click , break loop
+                            }
 
         // if(terminators[0].Hull > 0 && alienShips[i].Hull > 0 ){
         //     if(Math.random() < terminators[0].accuracy){ 
@@ -134,9 +148,7 @@ let alienShips = [
         
         // }}
         }} 
-            if(terminators[0].Hull > 0 && alienShips[0].Hull <= 0 ){
-console.log('Continue? Y/N')
-            }
+      
         
 
 // const versus = function vs(ship1 , ship2){
